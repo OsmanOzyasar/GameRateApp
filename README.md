@@ -1,112 +1,130 @@
-# GameRateApp
 
-GameRateApp is a comprehensive C# application designed for gamers to rate and review their favorite games. This platform allows users to share their gaming experiences, discover new games, and engage with a community of like-minded individuals.
+# 🎮 GameRateApp – Layered Architecture Web API with JWT Authentication
 
-## Table of Contents
-
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
-## Features
-
-- **User Authentication**: Secure user registration and login system.
-- **Game Listings**: Detailed information about a wide range of games.
-- **Reviews and Ratings**: Users can rate and review games they have played.
-- **Search Functionality**: Easily find games using the search feature.
-- **User Profiles**: Manage personal information and view your submitted reviews.
-
-## Installation
-
-To set up the project locally, follow these steps:
-
-1. **Clone the repository**:
-   ```sh
-   git clone https://github.com/OsmanOzyasar/GameRateApp.git
-   ```
-
-2. **Navigate to the project directory**:
-   ```sh
-   cd GameRateApp
-   ```
-
-3. **Open the solution file** in your preferred IDE (e.g., Visual Studio).
-
-4. **Restore the NuGet packages**:
-   ```sh
-   dotnet restore
-   ```
-
-5. **Build and run the project**:
-   ```sh
-   dotnet run
-   ```
-
-## Usage
-
-1. **Register an Account**:
-   - Open the application and navigate to the registration page.
-   - Fill in the required details and submit to create a new account.
-
-2. **Log In**:
-   - Use your registered email and password to log in.
-
-3. **Browse Games**:
-   - Explore the list of available games on the homepage.
-   - Click on a game to view detailed information and user reviews.
-
-4. **Search for Games**:
-   - Use the search bar to find specific games by name or genre.
-
-5. **Rate and Review**:
-   - Navigate to the game you have played and submit your rating and review.
-   - View other users' reviews and ratings.
-
-6. **Manage Your Profile**:
-   - Access your profile to update personal information and view your submitted reviews.
-
-## Contributing
-
-Contributions are welcome! To contribute to the project, follow these steps:
-
-1. **Fork the repository**:
-   - Click the "Fork" button on the top right corner of the repository page.
-
-2. **Create a new branch** for your feature or bugfix:
-   ```sh
-   git checkout -b feature/your-feature-name
-   ```
-
-3. **Make your changes**:
-   - Implement your feature or fix the bug.
-
-4. **Commit your changes**:
-   ```sh
-   git commit -m 'Add some feature'
-   ```
-
-5. **Push to the branch**:
-   ```sh
-   git push origin feature/your-feature-name
-   ```
-
-6. **Open a pull request**:
-   - Go to the repository on GitHub and click "New pull request".
-
-## License
-
-This project is licensed under the MIT License.
-
-## Contact
-
-For any inquiries or support, please contact Osman Ozyasar at [osman.ozyasar27@gmail.com].
+**GameRateApp** is a robust ASP.NET Core Web API project built with a real-world enterprise structure. It allows users to register, log in, and interact with a game rating system via secured endpoints using JWT authentication and role-based authorization.
 
 ---
 
-Thank you for using GameRateApp! We hope you enjoy sharing your gaming experiences with the community.
+## 📚 Features
+
+- ASP.NET Core Web API (.NET 6+)
+- Entity Framework Core
+- 3-Tier Architecture (Presentation → Business → Data Access)
+- JWT Authentication with token generation
+- Role-based Authorization (Admin / User)
+- Swagger API Documentation
+- DTO + AutoMapper Usage
+- Clean, scalable, and maintainable codebase
+
+---
+
+## 🧱 Project Architecture
+
+```
+GameRateApp/
+├── GameRateApp.API           # Presentation Layer (Controllers, Swagger)
+├── GameRateApp.Business      # Business Logic Layer (Services, Interfaces)
+├── GameRateApp.DataAccess    # Data Access Layer (Repositories)
+
 ```
 
-Feel free to further customize this template to match the specific details and requirements of your project. Let me know if you need any additional sections or information!
+---
+
+## 🚀 Getting Started
+
+> Note: SQL Server must be installed. Connection string should be updated in `appsettings.json`.
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/OsmanOzyasar/GameRateApp.git
+cd GameRateApp
+```
+
+### 2. Restore NuGet packages
+
+```bash
+dotnet restore
+```
+
+### 3. Apply migrations and create the database
+
+```bash
+cd GameRateApp.API
+dotnet ef database update
+```
+
+### 4. Run the application
+
+```bash
+dotnet run
+```
+
+### 5. Access Swagger UI
+
+> http://localhost:5000/swagger  
+(Port may vary depending on `launchSettings.json`)
+
+---
+
+## 🔐 Authentication and Authorization
+
+### Auth Endpoints
+
+| Endpoint | Description |
+|----------|-------------|
+| `POST /api/auth/register` | Registers a new user |
+| `POST /api/auth/login` | Logs in and returns JWT token |
+
+Use the token as follows:
+
+```http
+Authorization: Bearer <your_token>
+```
+
+### Role-Based Access
+
+- Admins can add, update, and delete games.
+- Normal users can view game data.
+
+---
+
+## 📑 API Endpoints Overview
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/games` | Get all games |
+| GET | `/api/games/{id}` | Get game by ID |
+| POST | `/api/games` | Add new game *(Admin only)* |
+| PUT | `/api/games/{id}` | Update a game *(Admin only)* |
+| DELETE | `/api/games/{id}` | Delete a game *(Admin only)* |
+
+---
+
+## 🧪 Demo
+
+![Swagger Demo](swagger-demo.png)
+
+---
+
+## 💼 Freelance Usage Suggestion
+
+This project is a strong portfolio piece for freelance work in:
+- **Backend API Development**
+- **JWT Authentication Systems**
+- **Enterprise-Level Architecture**
+
+---
+
+## 👨‍💻 Developer
+
+**Osman Ozyasar**  
+.NET & Web API Developer  
+📫 [osman.ozyasar27@gmail.com]  
+🔗 [https://www.linkedin.com/in/osman-özyaşar-332b0b24b]
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
