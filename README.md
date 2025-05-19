@@ -101,12 +101,6 @@ Authorization: Bearer <your_token>
 
 ---
 
-## 🧪 Demo
-
-![Swagger Demo](swagger-demo.png)
-
----
-
 ## 💼 Freelance Usage Suggestion
 
 This project is a strong portfolio piece for freelance work in:
